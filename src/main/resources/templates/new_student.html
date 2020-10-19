@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container my-2">
+        <h1>Student Management System</h1>
+        <h3>Add new student</h3>
+        <form action="#" th:action="@{/savestudent}"  method="post">
+            <div class="form-group">
+                <label>First Name</label>
+                <input th:field="*{student.firstName}" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter First Name">
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('student.firstName')}" th:errors="*{student.firstName}"></div>
+            </div>
+            <div class="form-group">
+                <label>Last Name</label>
+                <input th:field="*{student.lastName}" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Last Name">
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('student.lastName')}" th:errors="*{student.lastName}"></div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input th:field="*{student.email}" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email">
+                <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('student.email')}" th:errors="*{student.email}"></div>
+            </div>
+            <div class="form-group">
+                <label>Course</label>
+                <select class="form-control" th:field="*{student.course}">
+                    <option th:each="course: ${courselist}"
+                            th:value="${course.id}"
+                            th:text="${course.name}"></option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button><br><br>
+        </form>
+
+    </div>
+</body>
+</html>

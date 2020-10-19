@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div class="container my-2">
+    <h1>Student Management System</h1>
+    <h3>Add new course</h3>
+    <form action="#" th:action="@{/savecourse}"   method="post">
+        <div class="form-group">
+            <label>First Name</label>
+            <input th:field="*{course.name}"  type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter the course">
+        </div>
+        <button type="submit" class="btn btn-primary">Add new course</button>
+    </form>
+
+</body>
+</html>

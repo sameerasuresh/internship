@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+</head>
+<body>
+    <div class="container my-2">
+        <h1>Student List</h1>
+        <a th:href="@{/shownewstudentform}" class="btn btn-success">Add Student</a>
+        <a th:href="@{/shownewcourseform}" class="btn btn-warning">Add new course</a>
+        <br><br>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Course</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each ="student : ${listStudents}">
+                <td th:text = "${student.firstName}"></td>
+                <td th:text = "${student.lastName}"></td>
+                <td th:text = "${student.email}"></td>
+                <td th:text="${student.course.getName()}"></td>
+                <td>
+                    <a th:href="@{/showFormforUpdate/{id}(id = ${student.id})}" class="btn btn-primary">Update</a>
+                    <a th:href="@{/deletStudent/{id}(id =${student.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<!--time range of power cut: 11.40-->
+</html>
